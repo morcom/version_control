@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!-- File History Tracker: two counter-clockwise chasing arrows (blue and orange), gaps at both ends -->
+  <path d="M 672.6,167.6 A 380,380 0 0 0 167.6,672.6" fill="none" stroke="#0a84ff" stroke-width="84" stroke-linecap="round"/>
+  <path d="M 351.4,856.4 A 380,380 0 0 0 859.1,357.4" fill="none" stroke="#ff9500" stroke-width="84" stroke-linecap="round"/>
+  <path d="M 243.73291,637.09503 L 226.76962,799.478 L 91.473206,708.0949 Z" fill="#0a84ff"/>
+  <path d="M 782.40955,391.606 L 802.2042,229.54375 L 935.88513,323.27426 Z" fill="#ff9500"/>
+  <line x1="512" y1="512" x2="512" y2="316" stroke="#ff9500" stroke-width="52" stroke-linecap="round"/>
+  <line x1="512" y1="512" x2="628" y2="628" stroke="#ff9500" stroke-width="64" stroke-linecap="round"/>
+  <circle cx="512" cy="512" r="56" fill="#ff9500"/>
+</svg>
