@@ -1,4 +1,5 @@
-# File History Tracker
+![LOGO](src-tauri/icons/Square150x150Logo.png)
+# File History Tracker 
 
 **Automatic, invisible version history for your Windows folders.**
 
