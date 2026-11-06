@@ -1,7 +1,4 @@
-![LOGO](src-tauri/icons/Square150x150Logo.png)
-# File History Tracker 
-
-**Automatic, invisible version history for your Windows folders.**
+![File History Tracker: automatic, invisible version history for your Windows folders.](assets/banner.png)
 
 File History Tracker runs quietly in the system tray and keeps every saved version of every file in the folders you
 choose. There is nothing to commit and nothing to remember: you just work as usual. When you need an older version —
@@ -34,17 +31,7 @@ It is like Git or Windows File History, but fully automatic, per save, and focus
 
 ## How it works
 
-```
- watched folders ──► file system watcher ──► debounce & stability check ──► ingest worker
-                                                                                  │
-                     ┌────────────────────────────────────────────────────────────┤
-                     ▼                                ▼                           ▼
-             content hash (BLAKE3)          zstd full copy or delta        text extraction + diff
-                     │                                │                           │
-                     └──────────────► SQLite (metadata) + object store ◄─────────┘
-                                                      ▲
-                       React GUI (history, compare, restore, settings) via Tauri commands
-```
+![Pipeline diagram: watched folders feed a file system watcher, a debounce and stability check, and the ingest worker. The worker runs a BLAKE3 content hash, a zstd full copy or delta, and text extraction with diff. All three write to SQLite metadata and the object store, which the React GUI reads through Tauri commands.](assets/how-it-works.png)
 
 1. **Watching.** Each watched folder is monitored with the native Windows file change notifications. Events are
    debounced, and a file is only read once it has stopped changing, so programs that save in several steps (Office,

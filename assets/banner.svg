@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-labelledby="title desc">
+  <title id="title">File History Tracker</title>
+  <desc id="desc">The File History Tracker clock icon next to the app name and the tagline: automatic, invisible version history for your Windows folders.</desc>
+  <metadata><dc:creator>Michal Borkowski</dc:creator></metadata>
+  <defs>
+    <clipPath id="frame"><rect width="1200" height="300" rx="18"/></clipPath>
+    <linearGradient id="stripe" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#0a84ff"/>
+      <stop offset="1" stop-color="#ff9500"/>
+    </linearGradient>
+  </defs>
+  <style>
+    text { font-family: "Segoe UI", Inter, system-ui, -apple-system, sans-serif; }
+    .name { fill: #e6edf3; font-size: 68px; font-weight: 700; }
+    .tagline { fill: #8b98a5; font-size: 24px; }
+  </style>
+  <g clip-path="url(#frame)">
+    <rect width="1200" height="300" fill="#0f1216"/>
+    <rect y="292" width="1200" height="8" fill="url(#stripe)"/>
+  </g>
+  <svg id="icon" x="171" y="62" width="170" height="170" viewBox="0 0 1024 1024">
+    <path d="M 672.6,167.6 A 380,380 0 0 0 167.6,672.6" fill="none" stroke="#0a84ff" stroke-width="84" stroke-linecap="round"/>
+    <path d="M 351.4,856.4 A 380,380 0 0 0 859.1,357.4" fill="none" stroke="#ff9500" stroke-width="84" stroke-linecap="round"/>
+    <path d="M 243.73291,637.09503 L 226.76962,799.478 L 91.473206,708.0949 Z" fill="#0a84ff"/>
+    <path d="M 782.40955,391.606 L 802.2042,229.54375 L 935.88513,323.27426 Z" fill="#ff9500"/>
+    <line x1="512" y1="512" x2="512" y2="316" stroke="#ff9500" stroke-width="52" stroke-linecap="round"/>
+    <line x1="512" y1="512" x2="628" y2="628" stroke="#ff9500" stroke-width="64" stroke-linecap="round"/>
+    <circle cx="512" cy="512" r="56" fill="#ff9500"/>
+  </svg>
+  <text class="name" x="381" y="146">File History Tracker</text>
+  <text class="tagline" x="383" y="192">Automatic, invisible version history for your Windows folders.</text>
+</svg>
