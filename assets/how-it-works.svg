@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" width="1200" height="880" viewBox="0 0 1200 880" role="img" aria-labelledby="title desc">
+  <title id="title">How File History Tracker works</title>
+  <desc id="desc">Watched folders feed a file system watcher, then a debounce and stability check, then the ingest worker. The ingest worker computes a BLAKE3 content hash, stores a zstd full copy or delta, and runs text extraction and diff. All three write to SQLite metadata and the object store, which the React GUI reads through Tauri commands.</desc>
+  <metadata><dc:creator>Michal Borkowski</dc:creator></metadata>
+  <defs>
+    <marker id="arrow" viewBox="0 0 12 12" refX="12" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0 0 L12 6 L0 12 Z" fill="#8b98a5"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: "Segoe UI", Inter, system-ui, -apple-system, sans-serif; text-anchor: middle; }
+    .lane { fill: #161b22; stroke: #232b36; }
+    .eyebrow { fill: #8b98a5; font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-anchor: start; }
+    .card { fill: #0f1216; stroke: #2f3947; stroke-width: 1.5; }
+    .hub { fill: #0f1216; stroke: #3fb950; stroke-width: 2; }
+    .name { fill: #e6edf3; font-size: 19px; font-weight: 600; }
+    .note { fill: #8b98a5; font-size: 14px; }
+    .flow { fill: none; stroke: #8b98a5; stroke-width: 2; stroke-linejoin: round; }
+    .pill { fill: #0f1216; stroke: #4c8dff; stroke-width: 1.5; }
+    .pill-text { fill: #e6edf3; font-size: 14px; font-weight: 600; }
+    .plus { fill: #3fb950; font-size: 26px; font-weight: 600; }
+  </style>
+
+  <rect x="0" y="0" width="1200" height="880" rx="18" fill="#0f1216"/>
+
+  <!-- Lanes -->
+  <rect class="lane" x="20" y="30" width="1160" height="160" rx="12"/>
+  <rect class="lane" x="20" y="250" width="1160" height="160" rx="12"/>
+  <rect class="lane" x="20" y="470" width="1160" height="160" rx="12"/>
+  <rect class="lane" x="20" y="690" width="1160" height="160" rx="12"/>
+  <text class="eyebrow" x="40" y="58">CAPTURE</text>
+  <text class="eyebrow" x="40" y="278">PROCESS</text>
+  <text class="eyebrow" x="40" y="498">STORE</text>
+  <text class="eyebrow" x="40" y="718">BROWSE</text>
+
+  <!-- Flows -->
+  <g class="flow">
+    <path d="M240 122 H290" marker-end="url(#arrow)"/>
+    <path d="M510 122 H560" marker-end="url(#arrow)"/>
+    <path d="M840 122 H890" marker-end="url(#arrow)"/>
+    <path d="M1025 170 V294" marker-end="url(#arrow)"/>
+    <path d="M1025 222 H600 V294" marker-end="url(#arrow)"/>
+    <path d="M600 222 H175 V294" marker-end="url(#arrow)"/>
+    <path d="M175 390 V442 H600" />
+    <path d="M1025 390 V442 H600" />
+    <path d="M600 390 V514" marker-end="url(#arrow)"/>
+    <path d="M600 734 V610" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Capture -->
+  <g>
+    <rect class="card" x="40" y="74" width="200" height="96" rx="10"/>
+    <text class="name" x="140" y="117">Watched folders</text>
+    <text class="note" x="140" y="143">Folders you choose</text>
+    <rect class="card" x="290" y="74" width="220" height="96" rx="10"/>
+    <text class="name" x="400" y="117">File system watcher</text>
+    <text class="note" x="400" y="143">Native Windows notifications</text>
+    <rect class="card" x="560" y="74" width="280" height="96" rx="10"/>
+    <text class="name" x="700" y="117">Debounce &amp; stability check</text>
+    <text class="note" x="700" y="143">Read once the file stops changing</text>
+    <rect class="card" x="890" y="74" width="270" height="96" rx="10"/>
+    <text class="name" x="1025" y="117">Ingest worker</text>
+    <text class="note" x="1025" y="143">Turns each save into a version</text>
+  </g>
+
+  <!-- Process -->
+  <g>
+    <rect class="card" x="40" y="294" width="270" height="96" rx="10"/>
+    <text class="name" x="175" y="337">Content hash (BLAKE3)</text>
+    <text class="note" x="175" y="363">Identical content is stored once</text>
+    <rect class="card" x="465" y="294" width="270" height="96" rx="10"/>
+    <text class="name" x="600" y="337">zstd full copy or delta</text>
+    <text class="note" x="600" y="363">Keyframe, or a delta against it</text>
+    <rect class="card" x="890" y="294" width="270" height="96" rx="10"/>
+    <text class="name" x="1025" y="337">Text extraction + diff</text>
+    <text class="note" x="1025" y="363">Line diff for text-like files</text>
+  </g>
+
+  <!-- Store -->
+  <g>
+    <rect class="hub" x="240" y="514" width="720" height="96" rx="10"/>
+    <text class="name" x="420" y="557">SQLite (metadata)</text>
+    <text class="note" x="420" y="583">Folders, files, versions, settings</text>
+    <text class="plus" x="600" y="572">+</text>
+    <text class="name" x="780" y="557">Object store</text>
+    <text class="note" x="780" y="583">Keyframes and deltas</text>
+  </g>
+
+  <!-- Browse -->
+  <g>
+    <rect class="card" x="240" y="734" width="720" height="96" rx="10"/>
+    <text class="name" x="600" y="777">React GUI</text>
+    <text class="note" x="600" y="803">History · Compare · Restore · Settings</text>
+  </g>
+
+  <rect class="pill" x="530" y="646" width="140" height="28" rx="14"/>
+  <text class="pill-text" x="600" y="665">Tauri commands</text>
+</svg>
