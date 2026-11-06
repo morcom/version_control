@@ -1,0 +1,51 @@
+[package]
+name = "file-history-tracker"
+version = "0.1.2"
+description = "Automatic file version history and restore for Windows"
+authors = ["Michał Borkowski"]
+license = "GPL-3.0-or-later"
+repository = "https://github.com/morcom/version_control"
+edition = "2024"
+
+[lib]
+name = "file_history_tracker_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon", "image-png"] }
+tauri-plugin-opener = "2"
+tauri-plugin-dialog = "2"
+tauri-plugin-autostart = "2"
+tauri-plugin-single-instance = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1.0.104"
+log = { version = "0.4.35", features = ["std"] }
+rusqlite = { version = "0.41.1", features = ["bundled"] }
+blake3 = "1.8.7"
+zstd-safe = "8.2.0"
+similar = "3.2.1"
+notify = "8.2.1"
+walkdir = "2.5.0"
+globset = "0.4.21"
+chrono = "0.4.45"
+encoding_rs = "0.8.44"
+content_inspector = "0.2.4"
+quick-xml = "0.42.0"
+calamine = "0.38.0"
+zip = "9.3.0"
+pdf-extract = "0.12.1"
+tempfile = "3.27.0"
+dirs = "7.0.0"
+
+[dev-dependencies]
+tempfile = "3.27.0"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = 3
+strip = true
