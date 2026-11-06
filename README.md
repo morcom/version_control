@@ -1,8 +1,8 @@
 ![File History Tracker: automatic, invisible version history for your Windows folders.](assets/banner.png)
 
 File History Tracker runs quietly in the system tray and keeps every saved version of every file in the folders you
-choose. There is nothing to commit and nothing to remember: you just work as usual. When you need an older version —
-an overwritten paragraph, a spreadsheet before a bad edit, a file you deleted last week — you open the app, pick the
+choose. There is nothing to commit and nothing to remember: you just work as usual. When you need an older version -
+an overwritten paragraph, a spreadsheet before a bad edit, a file you deleted last week - you open the app, pick the
 file, see what changed, and restore it.
 
 It is like Git or Windows File History, but fully automatic, per save, and focused on ordinary documents.
@@ -17,12 +17,12 @@ It is like Git or Windows File History, but fully automatic, per save, and focus
   (`.xlsx`, `.xlsm`, `.ods`) and PDF files are compared by their text content. Other files are stored byte-exact and
   can always be restored. An external diff tool (for example WinMerge) can be configured.
 - **Restores in several ways:**
-  - **Restore as…** — save an old version under a new name (default `name (YYYY-MM-DD HH-mm).ext`). If you save it
+  - **Restore as...** - save an old version under a new name (default `name (YYYY-MM-DD HH-mm).ext`). If you save it
     inside a watched folder, the new file is tracked too.
-  - **Restore in place** — put an old version back. The current content is stored as a version first, so a restore
+  - **Restore in place** - put an old version back. The current content is stored as a version first, so a restore
     can always be undone.
-  - **Undelete** — bring back a deleted file.
-  - **Restore a whole folder to a point in time** — rebuild the folder as it was at a chosen date and time into another
+  - **Undelete** - bring back a deleted file.
+  - **Restore a whole folder to a point in time** - rebuild the folder as it was at a chosen date and time into another
     folder, using the file names valid at that moment.
 - **Follows renames and moves**, including renamed folders, so a file keeps its history under its new name.
 - **Keeps storage small** with compression, delta storage and configurable retention (see below).
@@ -36,7 +36,7 @@ It is like Git or Windows File History, but fully automatic, per save, and focus
 1. **Watching.** Each watched folder is monitored with the native Windows file change notifications. Events are
    debounced, and a file is only read once it has stopped changing, so programs that save in several steps (Office,
    editors that write a temporary file and rename it) produce exactly one version.
-2. **Filtering.** Temporary and lock files (`~$*`, `*.tmp`, `*.swp`, `.git`, `node_modules`, …) and files above a
+2. **Filtering.** Temporary and lock files (`~$*`, `*.tmp`, `*.swp`, `.git`, `node_modules`, ...) and files above a
    size limit are ignored. You can add your own ignore patterns per folder. Cloud placeholders (OneDrive
    "online-only" files) are skipped so nothing is downloaded.
 3. **De-duplication.** Every version is identified by a BLAKE3 hash of its content. Saving a file without changes,
@@ -55,7 +55,7 @@ It is like Git or Windows File History, but fully automatic, per save, and focus
 
 ### Retention
 
-Configured in **Configuration → Retention**, with these defaults:
+Configured in **Configuration -> Retention**, with these defaults:
 
 | Age of a version | What is kept |
 |---|---|
@@ -73,16 +73,16 @@ is deleted. History of folders you stop watching is kept untouched unless you ex
 
 All data stays on your computer, in `%LOCALAPPDATA%\FileHistoryTracker`:
 
-- `history.db` — SQLite metadata (folders, files, versions, settings)
-- `objects\xx\<hash>.zst` — compressed file contents and deltas
-- `app.log` — log file (rotated at 5 MB)
+- `history.db` - SQLite metadata (folders, files, versions, settings)
+- `objects\xx\<hash>.zst` - compressed file contents and deltas
+- `app.log` - log file (rotated at 5 MB)
 
 The app makes no network connections. Before a database upgrade a backup copy of `history.db` is created.
 
 ## Using the app
 
 1. Start the app; it appears as an icon in the system tray. Click the icon to open the window.
-2. **Configuration → Add folder** and choose a folder to watch. Existing files are recorded as the first version.
+2. **Configuration -> Add folder** and choose a folder to watch. Existing files are recorded as the first version.
 3. Work as usual. Every save creates a version.
 4. **Restore** tab: pick a folder and a file. The history list shows every version; the right panel shows what changed.
    Tick two versions and press **Compare selected** to compare them, or use the buttons to restore.
@@ -103,7 +103,7 @@ npm run tauri build    # build the release exe and the NSIS/MSI installers
 Output:
 
 - `src-tauri\target\release\file-history-tracker.exe`
-- `src-tauri\target\release\bundle\nsis\*-setup.exe` — per-user installer, no administrator rights needed
+- `src-tauri\target\release\bundle\nsis\*-setup.exe` - per-user installer, no administrator rights needed
 - `src-tauri\target\release\bundle\msi\*.msi`
 
 Builds from source are unsigned, so Windows SmartScreen may show a warning the first time you run them.
@@ -135,7 +135,7 @@ and undelete, restore in place, point-in-time folder restore, the start-up re-sc
 
 ## Technology
 
-Rust · Tauri v2 · React · TypeScript · SQLite (rusqlite) · zstd · BLAKE3 · notify · similar
+Rust, Tauri v2, React, TypeScript, SQLite (rusqlite), zstd, BLAKE3, notify, similar
 
 ## License
 
