@@ -1,6 +1,6 @@
 [package]
 name = "file-history-tracker"
-version = "0.1.2"
+version = "0.1.3"
 description = "Automatic file version history and restore for Windows"
 authors = ["Michał Borkowski"]
 license = "GPL-3.0-or-later"
